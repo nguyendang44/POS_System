@@ -134,7 +134,7 @@ Co So Du Lieu (MySQL)
 - **CI/CD:** Pipeline GitHub Actions cho build tự động.
 - **Tài Liệu:** README và CHANGELOG chi tiết.
 
-### **Version Mới (1.0.0 - V1):**
+### **Version Mới (2.0.0 - V2):**
 - **Hiệu Năng:** Tích hợp HikariCP Connection Pooling giúp tái sử dụng kết nối, tăng tốc độ truy vấn và giảm tải cho MySQL.
 - **Connection Pooling:** Tạo pool tối đa 10 kết nối hoạt động đồng thời, loại bỏ lỗi "Too many connections".
 - **Cấu Hình Động:** Cho phép đọc thông tin DB từ config.properties hoặc biến môi trường (DB_URL, DB_USER, DB_PASS).
