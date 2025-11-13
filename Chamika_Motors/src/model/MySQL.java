@@ -1,39 +1,41 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import util.DBUtil;
 
+/**
+ * Lightweight helper to execute simple SQL statements.
+ *
+ * NOTE: This utility returns a ResultSet for SELECT queries and
+ * leaves it to the caller to close the ResultSet/Statement/Connection
+ * using DBUtil.closeQuietly(...) when finished. For UPDATE/INSERT/DELETE
+ * it executes the update and returns null.
+ */
 public class MySQL {
 
-    private static Connection connection;
-    
-    static{
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chamika_motors", "root", "password");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
     public static ResultSet execute(String query) {
-
+        Connection connection = null;
+        Statement statement = null;
         try {
-            
-            Statement statement = connection.createStatement();
+            connection = DBUtil.getConnection();
+            statement = connection.createStatement();
 
-            if (query.startsWith("SELECT")) {
-                ResultSet resultSet = statement.executeQuery(query);
-                return resultSet;
+            if (query.trim().toUpperCase().startsWith("SELECT")) {
+                // Return the ResultSet (caller must close resources)
+                return statement.executeQuery(query);
             } else {
-                int result = statement.executeUpdate(query);
+                statement.executeUpdate(query);
+                // close resources for non-select
+                DBUtil.closeQuietly(statement, connection);
                 return null;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+            // Attempt to close resources on error
+            DBUtil.closeQuietly(statement, connection);
             return null;
         }
     }

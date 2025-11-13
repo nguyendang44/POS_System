@@ -4,7 +4,7 @@
  */
 package gui;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
+// import com.formdev.flatlaf.FlatDarculaLaf;
 import dto.CustomerDto;
 import java.sql.ResultSet;
 import java.util.HashMap;
@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.MySQL;
 import repository.CustomerRepositoryImpl;
-import service.CustomerService;
 import service.CustomerServiceImpl;
 
 /**
@@ -23,8 +22,8 @@ import service.CustomerServiceImpl;
  */
 public class Customer_Registration extends javax.swing.JFrame {
 
-    private final CustomerService customerService;
 
+    private final CustomerServiceImpl customerService;
     /**
      * Creates new form Company_Registration
      */

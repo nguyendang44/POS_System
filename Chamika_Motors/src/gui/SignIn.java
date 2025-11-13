@@ -1,6 +1,6 @@
 package gui;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
+// import com.formdev.flatlaf.FlatDarculaLaf;
 import java.awt.Image;
 import java.sql.ResultSet;
 import java.util.HashMap;
@@ -218,7 +218,7 @@ public class SignIn extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        FlatDarculaLaf.setup();
+        // FlatDarculaLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
